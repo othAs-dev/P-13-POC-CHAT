@@ -1,0 +1,32 @@
+ <div class="chat-container">
+    <div class="chat-header">
+      <h2>Spring WebSocket Chat POC</h2>
+    </div>
+    <ul id="messageArea">
+      <li *ngFor="let message of messages">
+        <div *ngIf="message.type === 'JOIN' || message.type === 'LEAVE'" class="event-message">
+          <p>{{message.content}}</p>
+        </div>
+        <div *ngIf="message.type === 'CHAT'" class="chat-message">
+
+          <span>{{message.sender }}</span>
+          <p>{{message.content}}</p>
+        </div>
+      </li>
+    </ul>
+    <form (ngSubmit)="sendMessage()">
+      <div class="form-group">
+        <div class="input-group clearfix">
+          <input
+            type="text"
+            [(ngModel)]="message"
+            placeholder="Type a message..."
+            autocomplete="off"
+            class="form-control"
+            name="message"
+          />
+          <button type="submit" class="primary">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
