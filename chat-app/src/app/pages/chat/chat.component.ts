@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
-import {WebsocketService} from "../../websocketService.sevice";
+import {WebsocketService} from "../../websocket.sevice";
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +19,7 @@ import {WebsocketService} from "../../websocketService.sevice";
 export default class ChatComponent implements OnInit {
   messages: any[] = [];
   message: string = '';
-  username!: string;
+
   private websocketService: WebsocketService = inject(WebsocketService);
 
   ngOnInit() {
@@ -30,9 +30,7 @@ export default class ChatComponent implements OnInit {
 
   sendMessage() {
     if (this.message.trim()) {
-      console.log(this.username);
       const chatMessage = {
-        sender: this.username,
         content: this.message,
         type: 'CHAT',
       };

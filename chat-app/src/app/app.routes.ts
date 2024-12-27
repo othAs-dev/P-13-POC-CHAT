@@ -6,7 +6,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/username/username.component'),
+        loadComponent: () => import('./pages/enterChat/enterChat.component'),
       },
       {
         path: 'chat',

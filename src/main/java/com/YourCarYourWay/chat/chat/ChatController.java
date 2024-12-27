@@ -16,20 +16,25 @@ public class ChatController {
     @Payload ChatMessage chatMessage,
     SimpMessageHeaderAccessor headerAccessor
   ) {
-    String username = (String) headerAccessor.getSessionAttributes().get("username");
-    if (username == null) { username = "Anonymous"; }
-    chatMessage.setSender(username);
+    if (headerAccessor.getSessionAttributes() != null) {
+      String username = (String) headerAccessor.getSessionAttributes().get("username");
+      if (username == null) {
+        username = "Anonymous";
+      }
+      chatMessage.setSender(username);
+    }
     return chatMessage;
   }
 
-    @MessageMapping("/chat.addUser")
-    @SendTo("/topic/public")
-    public ChatMessage addUser(
-            @Payload ChatMessage chatMessage,
-            SimpMessageHeaderAccessor headerAccessor
-    ) {
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
-      System.out.println(chatMessage.getSender());
-        return chatMessage;
+  @MessageMapping("/chat.addUser")
+  @SendTo("/topic/public")
+  public ChatMessage addUser(
+    @Payload ChatMessage chatMessage,
+    SimpMessageHeaderAccessor headerAccessor
+  ) {
+    if (headerAccessor.getSessionAttributes() != null) {
+      headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
     }
+    return chatMessage;
+  }
 }

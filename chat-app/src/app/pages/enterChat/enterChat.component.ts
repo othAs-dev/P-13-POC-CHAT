@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
-import {WebsocketService} from "../../websocketService.sevice";
+import {WebsocketService} from "../../websocket.sevice";
 
 @Component({
   selector: 'app-username',
@@ -10,16 +10,15 @@ import {WebsocketService} from "../../websocketService.sevice";
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './username.component.html',
-  styleUrl: './username.component.css'
+  templateUrl: './enterChat.component.html',
+  styleUrl: './enterChat.component.css'
 })
-export default class UsernameComponent {
+export default class EnterChatComponent {
   protected username!: string;
   private websocketService: WebsocketService = inject(WebsocketService);
   private router: Router = inject(Router);
 
   connect() {
-    console.log(this.username);
     if (this.username) {
       this.websocketService.connect(this.username);
       this.router.navigate(['/chat']);
