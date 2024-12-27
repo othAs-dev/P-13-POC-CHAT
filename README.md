@@ -9,9 +9,9 @@ Ce POC (Proof of Concept) démontre une application simple de chat en temps rée
 ## Comment démarrer ?
 
 1. Clonez ce dépôt.
-2. Installez les dépendances (si nécessaire).
+2. Installez les dépendances front et back.
 3. Lancez l'application.
-4. Ouvrez votre navigateur et accédez à [http://localhost:8080/](http://localhost:8080/).
+4. Ouvrez votre navigateur et accédez à [http://localhost:4200/](http://localhost:4200/).
 
 ## Fonctionnement
 
@@ -21,14 +21,10 @@ Lorsqu'un utilisateur se connecte, il saisit son nom d'utilisateur et rejoint le
 
 Ce POC est une étape préliminaire vers la mise en œuvre d'une fonctionnalité de chat en temps réel dans l'application "Your Car Your Way". L'objectif est de permettre aux utilisateurs de l'application de communiquer avec le support en temps réel, améliorant ainsi l'expérience utilisateur et rendant l'application plus interactive.
 
-## Structure du code
-
-index.html: Page principale de l'application, contient les éléments d'interface utilisateur pour le chat.
-main.js: Logique principale côté client pour la gestion des connexions WebSocket, l'envoi et la réception de messages.
-[Autres fichiers si nécessaire]
-
 ## Technologie utilisée
 
 WebSockets pour une communication bidirectionnelle entre le serveur et le client.
 STOMP (Simple Text Oriented Messaging Protocol) pour la gestion des messages.
 SockJS pour fournir une alternative aux WebSockets en cas de non-disponibilité.
+Agular pour la construction du front-end
+SpringBoot pour la construction du back-end
